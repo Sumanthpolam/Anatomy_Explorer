@@ -1,0 +1,6 @@
+{
+  "name": "Human Anatomy Explorer",
+  "description": "Interactive 3D Human Anatomy Explorer with multi-layered organ models, physiological animations, medical disease encyclopedia, and educational quizzes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
