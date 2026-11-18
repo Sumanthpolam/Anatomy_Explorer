@@ -7,7 +7,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/human-anatomy-explorer/',
+    base: '/Anatomy_Explorer/',
 
     plugins: [
       react(),
