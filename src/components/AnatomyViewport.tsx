@@ -1,3 +1,4 @@
+import { publicAssetUrl } from '../utils/publicAssetUrl';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { OrganData, OrganId } from '../types/anatomy';
 import type { CameraAnglePreset, SceneViewMode } from '../three/anatomyPartTypes';
@@ -198,10 +199,12 @@ export const AnatomyViewport: React.FC<AnatomyViewportProps> = ({
     [organs, viewMode],
   );
 
-  const specimenSrc =
-    viewMode === 'body'
-      ? BODY_IMAGE_URL
-      : activeOrgan?.illustrationUrl || FALLBACK_SPECIMEN_URLS[viewMode];
+  const specimenPath =
+  viewMode === 'body'
+    ? BODY_IMAGE_URL
+    : activeOrgan?.illustrationUrl || FALLBACK_SPECIMEN_URLS[viewMode];
+
+const specimenSrc = publicAssetUrl(specimenPath);
 
   const specimenAlt =
     viewMode === 'body'

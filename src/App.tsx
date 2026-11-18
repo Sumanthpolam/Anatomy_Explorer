@@ -219,29 +219,27 @@ export default function App() {
     }
   }, []);
 
-  const handleDownloadZip = useCallback(async () => {
-    if (downloadingZip) return;
-    setDownloadingZip(true);
-    try {
-      const res = await fetch('/api/export-zip');
-      if (!res.ok) throw new Error('ZIP export failed');
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'human-anatomy-explorer.zip';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      setApiError(
-        err instanceof Error ? err.message : 'Unable to export project ZIP.',
-      );
-    } finally {
-      setDownloadingZip(false);
-    }
-  }, [downloadingZip]);
+  
+const handleDownloadZip = useCallback(() => {
+  if (downloadingZip) return;
+
+  setDownloadingZip(true);
+
+  const link = document.createElement('a');
+
+  link.href =
+    'https://github.com/Sumanthpolam/Anatomy_Explorer/archive/refs/heads/main.zip';
+
+  link.download = 'human-anatomy-explorer.zip';
+
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  window.setTimeout(() => {
+    setDownloadingZip(false);
+  }, 1000);
+}, [downloadingZip]);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FBF9F5] text-[#18181B]">

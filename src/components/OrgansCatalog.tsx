@@ -1,3 +1,4 @@
+import { publicAssetUrl } from '../utils/publicAssetUrl';
 import React, { useState } from 'react';
 import { ArrowRight, BookOpen } from 'lucide-react';
 import type { OrganCategory, OrganData, OrganId } from '../types/anatomy';
@@ -79,7 +80,7 @@ export const OrgansCatalog: React.FC<OrgansCatalogProps> = ({
       >
         {!imgErrors[organ.id] ? (
           <img
-            src={organ.illustrationUrl}
+            src={publicAssetUrl(organ.illustrationUrl)}
             alt={organ.illustrationCaption}
             referrerPolicy="no-referrer"
             onError={() =>

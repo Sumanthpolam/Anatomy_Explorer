@@ -1,3 +1,4 @@
+import { publicAssetUrl } from '../utils/publicAssetUrl';
 import React, { useEffect, useState } from 'react';
 import { Maximize2, X } from 'lucide-react';
 import type { OrganData } from '../types/anatomy';
@@ -75,7 +76,7 @@ export const InteractiveDiagram: React.FC<InteractiveDiagramProps> = ({
           {!imgError ? (
             <div className="relative w-full">
               <img
-                src={organ.illustrationUrl}
+                src={publicAssetUrl(organ.illustrationUrl)}
                 alt={organ.illustrationCaption}
                 referrerPolicy="no-referrer"
                 onError={() => setImgError(true)}
@@ -195,7 +196,7 @@ export const InteractiveDiagram: React.FC<InteractiveDiagramProps> = ({
             </div>
             <div className="mt-4 flex justify-center">
               <img
-                src={organ.illustrationUrl}
+                src={publicAssetUrl(organ.illustrationUrl)}
                 alt={organ.illustrationCaption}
                 referrerPolicy="no-referrer"
                 className="max-h-[75vh] w-auto object-contain rounded-lg border border-[#E5DFD3]"
